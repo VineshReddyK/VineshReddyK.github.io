@@ -1,6 +1,6 @@
 ﻿# Vinesh Reddy Kankanalapally — Portfolio
 
-> Personal portfolio website built with plain HTML, CSS & JavaScript. Inspired by [Brittany Chiang](https://brittanychiang.com).
+> Personal portfolio website built with plain HTML, CSS & JavaScript.
 
 🌐 **Live site:** [vineshreddyk.github.io](https://vineshreddyk.github.io)
 
