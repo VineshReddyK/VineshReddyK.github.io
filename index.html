@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vinesh Reddy Kankanalapally — Software Engineer</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <meta name="description" content="Backend Engineer & Cloud Architect building high-performance systems at Ford Motor Company. Specializing in Java, Spring Boot, AWS, and Kubernetes." />
   <meta property="og:title" content="Vinesh Reddy Kankanalapally — Software Engineer" />
   <meta property="og:description" content="Backend Engineer & Cloud Architect building high-performance systems at Ford Motor Company. Java, Spring Boot, AWS, Kubernetes." />
@@ -527,6 +530,109 @@
       background: rgba(100,255,218,0.22);
       box-shadow: 0 0 10px rgba(100,255,218,0.18);
     }
+
+    /* ── PROFESSIONAL POLISH ── */
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(100,255,218,0.18); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(100,255,218,0.38); }
+
+    /* Card left-border accent on hover using inset shadow (no layout shift) */
+    .exp-card:hover {
+      background: var(--card-hover);
+      box-shadow: inset 2px 0 0 var(--accent), 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .proj-card:hover {
+      background: var(--card-hover);
+      box-shadow: inset 2px 0 0 var(--accent), 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .cert-list li:hover {
+      background: var(--card-hover);
+      box-shadow: inset 2px 0 0 rgba(100,255,218,0.45), 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .edu-card:hover {
+      background: var(--card-hover);
+      box-shadow: inset 2px 0 0 rgba(100,255,218,0.45), 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Nav — active link is accent teal, not white */
+    nav a.active { color: var(--accent); }
+    nav a.active .line {
+      width: 64px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(100,255,218,0.45);
+    }
+
+    /* Social icons — teal + glow on hover */
+    .socials a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+      filter: drop-shadow(0 0 6px rgba(100,255,218,0.45));
+    }
+
+    /* Resume link — outlined button */
+    .resume-link {
+      gap: 8px;
+      padding: 11px 20px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(100,255,218,0.3);
+      border-radius: 4px;
+      transition: background 0.2s, border-color 0.2s, gap 0.2s, box-shadow 0.2s;
+    }
+    .resume-link:hover {
+      background: rgba(100,255,218,0.07);
+      border-color: var(--accent);
+      box-shadow: 0 0 16px rgba(100,255,218,0.12);
+      gap: 12px;
+    }
+
+    /* Availability badge */
+    .available-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      animation: dotPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(100,255,218,0.6); }
+      50%       { box-shadow: 0 0 0 5px rgba(100,255,218,0); }
+    }
+
+    /* Glassmorphism sticky section label on mobile */
+    @media (max-width: 768px) {
+      .sticky-header {
+        background: rgba(15,23,42,0.82);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-bottom: 12px;
+      }
+      .sticky-header span { background: transparent; }
+    }
+
+    /* Section headings on desktop — no background needed (nav handles it) */
+    @media (min-width: 769px) {
+      .sticky-header span { background: var(--bg); padding-right: 12px; }
+    }
   </style>
 </head>
 <body>
@@ -542,7 +648,8 @@
       <div class="left-top-header">
         <div class="left-top-text">
           <h1>Vinesh Reddy<br>Kankanalapally</h1>
-          <h2>Software Engineer</h2>
+          <h2>Software Engineer · Backend &amp; Cloud</h2>
+          <div class="available-badge"><span class="dot"></span>Open to opportunities</div>
         </div>
         <div class="profile-photo">
           <img src="photo.jpeg" alt="Vinesh Reddy Kankanalapally" />
@@ -680,7 +787,7 @@
       </div>
 
       <a class="resume-link" href="resume.pdf" target="_blank" rel="noopener">
-        View Full Résumé <span>→</span>
+        View Full Résumé <span>↗</span>
       </a>
     </section>
 
