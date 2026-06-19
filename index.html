@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vinesh Reddy Kankanalapally — Software Engineer</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="description" content="Backend Engineer & Cloud Architect building high-performance systems at Ford Motor Company. Specializing in Java, Spring Boot, AWS, and Kubernetes." />
+  <meta property="og:title" content="Vinesh Reddy Kankanalapally — Software Engineer" />
+  <meta property="og:description" content="Backend Engineer & Cloud Architect building high-performance systems at Ford Motor Company. Java, Spring Boot, AWS, Kubernetes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vineshreddyk.github.io" />
+  <meta property="og:image" content="https://vineshreddyk.github.io/photo.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vinesh Reddy Kankanalapally — Software Engineer" />
+  <meta name="twitter:description" content="Backend Engineer & Cloud Architect. Java, Spring Boot, AWS, Kubernetes." />
+  <meta name="twitter:image" content="https://vineshreddyk.github.io/photo.jpeg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -421,11 +431,18 @@
 
     @media (max-width: 768px) {
       .container { flex-direction: column; padding: 0 20px; }
-      .left { position: relative; height: auto; width: 100%; padding: 56px 0 28px; }
+      .left { position: relative; height: auto; width: 100%; min-width: unset; padding: 48px 0 24px; }
+      .left-top h1 { font-size: 1.9rem; }
       .right { padding: 24px 0 56px 0; }
       nav { display: none; }
       .section-label { display: block; }
       .skills-grid { grid-template-columns: 1fr; }
+      .exp-card, .proj-card { flex-direction: column; gap: 6px; padding: 16px; }
+      .exp-date { min-width: unset; font-size: 0.68rem; padding-top: 0; }
+      .proj-num { font-size: 1rem; }
+      .profile-photo { width: 80px; height: 80px; }
+      .tags { gap: 6px; }
+      .tag { font-size: 0.65rem; padding: 3px 9px; }
     }
 
     #codeCanvas {
@@ -608,6 +625,26 @@
       <div class="proj-card">
         <div class="proj-num">01</div>
         <div class="proj-body">
+          <h3><a href="https://github.com/VineshReddyK/Intelligent-cloud-operations-platform" target="_blank" rel="noopener">Intelligent Cloud Operations Platform</a> <span class="arrow">↗</span></h3>
+          <p>
+            AI-powered cloud-native operations platform built with Java 21 and Spring Boot 3.5 microservices. Features Kafka event streaming, Deep Java Library anomaly detection, a Kubernetes operator with a custom CRD for intelligent auto-scaling, and a full observability stack — Prometheus, Grafana, Loki, Tempo, and OpenTelemetry distributed tracing.
+          </p>
+          <div class="tags">
+            <span class="tag">Java 21</span>
+            <span class="tag">Spring Boot 3.5</span>
+            <span class="tag">Apache Kafka</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Deep Java Library</span>
+            <span class="tag">OpenTelemetry</span>
+            <span class="tag">Grafana</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-body">
           <h3>Cloud-Native Java Application <span class="arrow">↗</span></h3>
           <p>
             Deployed a Java/Spring Boot application on AWS EKS using Docker, Kubernetes, and Terraform with full CI/CD automation — improving deployment consistency by <strong style="color:var(--heading)">40%</strong>. Infrastructure is defined as code and pipelines trigger on every push.
@@ -625,7 +662,7 @@
       </div>
 
       <div class="proj-card">
-        <div class="proj-num">02</div>
+        <div class="proj-num">03</div>
         <div class="proj-body">
           <h3><a href="https://github.com/VineshReddyK/banking-rest-api-system" target="_blank" rel="noopener">Banking REST API System</a> <span class="arrow">↗</span></h3>
           <p>
@@ -643,7 +680,7 @@
       </div>
 
       <div class="proj-card">
-        <div class="proj-num">03</div>
+        <div class="proj-num">04</div>
         <div class="proj-body">
           <h3><a href="https://github.com/VineshReddyK/DDOS-Attack-Detection" target="_blank" rel="noopener">DDoS Attack Detection System</a> <span class="arrow">↗</span></h3>
           <p>
