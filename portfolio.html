@@ -426,6 +426,14 @@
       .skills-grid { grid-template-columns: 1fr; }
     }
 
+    #codeCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
     .spotlight {
       pointer-events: none;
       position: fixed;
@@ -438,6 +446,7 @@
 </head>
 <body>
 
+<canvas id="codeCanvas"></canvas>
 <div class="spotlight" id="spotlight"></div>
 
 <div class="container">
@@ -717,6 +726,68 @@
 </div>
 
 <script>
+  // Floating code background
+  const canvas = document.getElementById('codeCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const snippets = [
+    '@RestController', '@SpringBootApplication', '@Service', '@Repository',
+    '@Autowired', '@GetMapping', '@PostMapping', '@RequestBody',
+    'ResponseEntity<>', 'Optional<T>', 'List<String>', 'Map<K,V>',
+    'public class', 'private final', 'return ResponseEntity.ok()',
+    '@Entity', '@Table', '@Column', '@Id', '@GeneratedValue',
+    'JwtFilter', 'HttpStatus.OK', 'docker build', 'kubectl apply',
+    'terraform init', 'git push origin main', 'mvn spring-boot:run',
+    'SELECT * FROM', 'JOIN ON', 'WHERE id =', 'ORDER BY',
+    'new Thread()', 'CompletableFuture', 'ExecutorService',
+    'try { }', 'catch (Exception e)', '@Override', 'implements',
+    'AWS EKS', 'S3.putObject()', 'DynamoDB.query()', 'Lambda::handler',
+    '@Scheduled', 'KafkaTemplate', 'RedisTemplate', '@Transactional',
+  ];
+
+  let drops = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initDrops();
+  }
+
+  function initDrops() {
+    drops = [];
+    const count = Math.floor(canvas.width / 180);
+    for (let i = 0; i < count; i++) {
+      drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: 0.3 + Math.random() * 0.5,
+        snippet: snippets[Math.floor(Math.random() * snippets.length)],
+        opacity: 0.03 + Math.random() * 0.05,
+        size: 10 + Math.random() * 4,
+      });
+    }
+  }
+
+  function drawCode() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drops.forEach(d => {
+      ctx.font = `${d.size}px 'Fira Code', 'Courier New', monospace`;
+      ctx.fillStyle = `rgba(255,255,255,${d.opacity})`;
+      ctx.fillText(d.snippet, d.x, d.y);
+      d.y -= d.speed;
+      if (d.y < -20) {
+        d.y = canvas.height + 20;
+        d.x = Math.random() * canvas.width;
+        d.snippet = snippets[Math.floor(Math.random() * snippets.length)];
+      }
+    });
+    requestAnimationFrame(drawCode);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  drawCode();
+
   // Cursor spotlight
   const spotlight = document.getElementById('spotlight');
   document.addEventListener('mousemove', e => {
