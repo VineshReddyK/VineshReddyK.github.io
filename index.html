@@ -477,6 +477,56 @@
       z-index: 2;
       background: radial-gradient(600px at 50% 50%, rgba(29,78,216,0.12), transparent 80%);
     }
+
+    /* Page entrance */
+    .left  { animation: enterLeft  0.75s cubic-bezier(.22,.68,0,1.2) both; }
+    .right { animation: enterRight 0.70s ease 0.2s both; }
+
+    @keyframes enterLeft {
+      from { opacity: 0; transform: translateX(-22px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes enterRight {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.52s ease, transform 0.52s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Profile photo ring pulse */
+    @keyframes ringPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(100,255,218,0.45); }
+      50%       { box-shadow: 0 0 0 7px rgba(100,255,218,0); }
+    }
+    .profile-photo { animation: ringPulse 3.2s ease-in-out infinite; }
+
+    /* Orb particles */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(100,255,218,0.11) 0%, transparent 70%);
+      filter: blur(32px);
+      animation: orbDrift ease-in-out infinite;
+      will-change: transform;
+    }
+    @keyframes orbDrift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      40%       { transform: translate(55px, -38px) scale(1.12); }
+      70%       { transform: translate(-35px, 28px) scale(0.9); }
+    }
+
+    /* Tag hover glow */
+    .tag { transition: background 0.2s, box-shadow 0.2s; }
+    .tag:hover {
+      background: rgba(100,255,218,0.22);
+      box-shadow: 0 0 10px rgba(100,255,218,0.18);
+    }
   </style>
 </head>
 <body>
@@ -791,6 +841,48 @@
     p.style.cssText = `left:${Math.random()*100}%;width:${size}px;height:${size}px;animation-duration:${14+Math.random()*18}s;animation-delay:${-Math.random()*30}s;opacity:${0.2+Math.random()*0.5};`;
     container.appendChild(p);
   }
+
+  // Orbs — large blurred glowing blobs behind the dots
+  const orbCount = window.innerWidth < 768 ? 4 : 7;
+  for (let i = 0; i < orbCount; i++) {
+    const orb = document.createElement('div');
+    orb.className = 'orb';
+    const size = 160 + Math.random() * 240;
+    orb.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;animation-duration:${16+Math.random()*14}s;animation-delay:${-Math.random()*22}s;`;
+    container.appendChild(orb);
+  }
+
+  // Scroll reveal — cards fade + slide up when entering viewport
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.exp-card, .proj-card, .edu-card, .cert-list li').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    revealObs.observe(el);
+  });
+
+  // Stat counters — percentage numbers count up when scrolled into view
+  const countObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || e.target.dataset.counted) return;
+      e.target.dataset.counted = '1';
+      const target = parseInt(e.target.dataset.count);
+      let curr = 0;
+      const step = target / 35;
+      const iv = setInterval(() => {
+        curr = Math.min(curr + step, target);
+        e.target.textContent = Math.round(curr) + '%';
+        if (curr >= target) clearInterval(iv);
+      }, 28);
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll('strong[style*="heading"]').forEach(el => {
+    const m = el.textContent.match(/^(\d+)%$/);
+    if (m) { el.dataset.count = m[1]; countObs.observe(el); }
+  });
 
   // Cursor spotlight
   const spotlight = document.getElementById('spotlight');
