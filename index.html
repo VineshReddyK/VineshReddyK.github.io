@@ -445,12 +445,28 @@
       .tag { font-size: 0.65rem; padding: 3px 9px; }
     }
 
-    #codeCanvas {
+    .particles {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       z-index: 1;
       pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(100, 255, 218, 0.6);
+      animation: rise linear infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes rise {
+      0%   { transform: translateY(100vh) scale(1); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 0.2; }
+      100% { transform: translateY(-10vh) scale(0.2); opacity: 0; }
     }
 
     .spotlight {
@@ -465,7 +481,7 @@
 </head>
 <body>
 
-<canvas id="codeCanvas"></canvas>
+<div class="particles" id="particles"></div>
 <div class="spotlight" id="spotlight"></div>
 
 <div class="container">
@@ -765,131 +781,16 @@
 </div>
 
 <script>
-  // Floating Java code background
-  const canvas = document.getElementById('codeCanvas');
-  const ctx = canvas.getContext('2d');
-
-  const lines = [
-    '@SpringBootApplication',
-    'public class BankingApp {',
-    '  public static void main(String[] args) {',
-    '    SpringApplication.run(BankingApp.class);',
-    '  }',
-    '}',
-    '@RestController',
-    '@RequestMapping("/api/v1")',
-    'public class AccountController {',
-    '  @Autowired',
-    '  private AccountService accountService;',
-    '  @GetMapping("/accounts/{id}")',
-    '  public ResponseEntity<Account> getAccount(',
-    '      @PathVariable Long id) {',
-    '    return ResponseEntity.ok(',
-    '      accountService.findById(id));',
-    '  }',
-    '  @PostMapping("/transfer")',
-    '  public ResponseEntity<?> transfer(',
-    '      @RequestBody TransferRequest req) {',
-    '    accountService.transfer(req);',
-    '    return ResponseEntity.ok().build();',
-    '  }',
-    '}',
-    '@Service',
-    '@Transactional',
-    'public class AccountService {',
-    '  private final AccountRepository repo;',
-    '  public Optional<Account> findById(Long id){',
-    '    return repo.findById(id);',
-    '  }',
-    '  public void transfer(TransferRequest r) {',
-    '    Account from = repo.findById(r.getFrom())',
-    '      .orElseThrow(RuntimeException::new);',
-    '    from.debit(r.getAmount());',
-    '    repo.save(from);',
-    '  }',
-    '}',
-    '@Entity',
-    '@Table(name = "accounts")',
-    'public class Account {',
-    '  @Id @GeneratedValue',
-    '  private Long id;',
-    '  @Column(nullable = false)',
-    '  private BigDecimal balance;',
-    '  public void debit(BigDecimal amt) {',
-    '    this.balance = this.balance.subtract(amt);',
-    '  }',
-    '}',
-    '@Component',
-    'public class JwtAuthFilter extends',
-    '    OncePerRequestFilter {',
-    '  @Override',
-    '  protected void doFilterInternal(',
-    '      HttpServletRequest request,',
-    '      HttpServletResponse response,',
-    '      FilterChain chain) {',
-    '    String token = extractToken(request);',
-    '    if (jwtService.isValid(token)) {',
-    '      chain.doFilter(request, response);',
-    '    }',
-    '  }',
-    '}',
-    'kubectl apply -f deployment.yaml',
-    'docker build -t banking-api:latest .',
-    'terraform apply -auto-approve',
-    'mvn clean package -DskipTests',
-    'git push origin main',
-  ];
-
-  let drops = [];
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initDrops();
+  // CSS particle background — spawned once, animated entirely by CSS (no rAF loop)
+  const container = document.getElementById('particles');
+  const count = window.innerWidth < 768 ? 18 : 35;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('span');
+    p.className = 'particle';
+    const size = 1 + Math.random() * 3;
+    p.style.cssText = `left:${Math.random()*100}%;width:${size}px;height:${size}px;animation-duration:${14+Math.random()*18}s;animation-delay:${-Math.random()*30}s;opacity:${0.2+Math.random()*0.5};`;
+    container.appendChild(p);
   }
-
-  function initDrops() {
-    drops = [];
-    const count = Math.floor(canvas.width / 220);
-    for (let i = 0; i < count; i++) {
-      const startLine = Math.floor(Math.random() * lines.length);
-      drops.push({
-        x: 20 + Math.random() * (canvas.width - 40),
-        y: Math.random() * canvas.height,
-        speed: 0.25 + Math.random() * 0.4,
-        lineIndex: startLine,
-        opacity: 0.12 + Math.random() * 0.08,
-        size: 11,
-        lineSpacing: 18,
-        visibleLines: 6 + Math.floor(Math.random() * 6),
-      });
-    }
-  }
-
-  function drawCode() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = `11px 'Courier New', monospace`;
-
-    drops.forEach(d => {
-      for (let i = 0; i < d.visibleLines; i++) {
-        const idx = (d.lineIndex + i) % lines.length;
-        const fade = 1 - (i / d.visibleLines);
-        ctx.fillStyle = `rgba(255,255,255,${d.opacity * fade})`;
-        ctx.fillText(lines[idx], d.x, d.y + i * d.lineSpacing);
-      }
-      d.y -= d.speed;
-      if (d.y + d.visibleLines * d.lineSpacing < 0) {
-        d.y = canvas.height + 20;
-        d.x = 20 + Math.random() * (canvas.width - 40);
-        d.lineIndex = Math.floor(Math.random() * lines.length);
-      }
-    });
-    requestAnimationFrame(drawCode);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-  drawCode();
 
   // Cursor spotlight
   const spotlight = document.getElementById('spotlight');
