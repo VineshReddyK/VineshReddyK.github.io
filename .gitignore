@@ -1,0 +1,50 @@
+# Local project dirs (each lives in its own GitHub repo)
+DDOS-Attack-Detection/
+Intelligent-cloud-operations-platform/
+autonomous-resilience-platform/
+banking-rest-api-system/
+profile-readme/
+
+# Temp / clone dirs
+fixed/
+repo-clone/
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Secrets
+*.env
+.env*
