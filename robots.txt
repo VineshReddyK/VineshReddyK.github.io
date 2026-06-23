@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vineshreddyk.github.io/sitemap.xml
