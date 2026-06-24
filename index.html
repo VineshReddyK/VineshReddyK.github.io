@@ -987,6 +987,7 @@
       .tags { gap: 6px; }
       .tag { font-size: 0.63rem; padding: 3px 9px; }
       .stats-row { gap: 0; }
+      .socials { gap: 14px; }
       #kbd-hint { display: none; }
 
       .sticky-header {
@@ -1002,6 +1003,13 @@
 
     @media (min-width: 769px) {
       .sticky-header span { background: var(--bg); padding-right: 12px; }
+    }
+
+    @media (max-width: 400px) {
+      .left-top-header { flex-direction: column-reverse; align-items: flex-start; }
+      .profile-photo { width: 64px; height: 64px; }
+      .left-top h1 { font-size: 1.65rem; }
+      .stat-value { font-size: 1.2rem; }
     }
   </style>
 </head>
