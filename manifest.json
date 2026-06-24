@@ -1,0 +1,17 @@
+{
+  "name": "Vinesh Reddy Kankanalapally",
+  "short_name": "VRK",
+  "description": "Backend Engineer & Cloud Architect — Java, Spring Boot, AWS, Kubernetes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "photo.jpeg",
+      "sizes": "any",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
