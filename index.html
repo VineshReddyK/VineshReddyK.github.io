@@ -1365,7 +1365,7 @@
     <!-- FOOTER -->
     <footer>
       <p>
-        Designed &amp; built by Vinesh Reddy Kankanalapally.
+        &copy; <span id="footer-year"></span> Vinesh Reddy Kankanalapally. Designed &amp; built from scratch.
         Reach me at <a href="mailto:vineshreddyy.k@gmail.com">vineshreddyy.k@gmail.com</a>
         or <a href="tel:+17204400258">+1 (720) 440-0258</a>.
         Press <kbd style="font-size:0.7rem;padding:1px 5px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;font-family:inherit;color:var(--text)">⌘K</kbd> for quick contact.
@@ -1379,6 +1379,9 @@
 <div id="kbd-hint"><kbd>⌘</kbd><kbd>K</kbd> Quick Contact</div>
 
 <script>
+  /* ═══ FOOTER YEAR ═══ */
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
   /* ═══ LOADER ═══ */
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('loader').classList.add('hidden'), 950);
