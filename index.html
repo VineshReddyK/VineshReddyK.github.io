@@ -95,7 +95,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ── LOADER ── */
     #loader {
       position: fixed;
       inset: 0;
@@ -137,7 +136,6 @@
     @keyframes loadLine { to { width: 100%; } }
     @keyframes loaderFadeIn { to { opacity: 1; } }
 
-    /* ── SCROLL PROGRESS ── */
     #scroll-progress {
       position: fixed;
       top: 0; left: 0;
@@ -148,7 +146,6 @@
       transition: width 0.06s linear;
     }
 
-    /* ── CUSTOM CURSOR ── */
     #cursor-ring {
       position: fixed;
       top: 0; left: 0;
@@ -186,7 +183,6 @@
       #cursor-ring, #cursor-dot { display: none; }
     }
 
-    /* ── BACKGROUND LAYERS ── */
     .bg-grid {
       position: fixed;
       inset: 0;
@@ -240,7 +236,6 @@
       background: radial-gradient(650px at 50% 50%, rgba(29,78,216,0.1), transparent 80%);
     }
 
-    /* ── LAYOUT ── */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -251,7 +246,6 @@
       z-index: 3;
     }
 
-    /* ── LEFT PANEL ── */
     .left {
       position: sticky;
       top: 0;
@@ -354,7 +348,6 @@
       margin-top: 4px;
     }
 
-    /* ── STATS ROW ── */
     .stats-row {
       display: flex;
       gap: 0;
@@ -398,7 +391,6 @@
       color: var(--text);
     }
 
-    /* ── NAV ── */
     nav { margin-top: 44px; }
 
     nav a {
@@ -432,7 +424,6 @@
     nav a:hover { color: var(--heading); }
     nav a:hover .line { width: 56px; background: var(--heading); }
 
-    /* ── SOCIALS ── */
     .socials { display: flex; gap: 20px; align-items: center; }
 
     .socials a {
@@ -474,7 +465,6 @@
       50%       { box-shadow: 0 0 0 5px rgba(100,255,218,0); }
     }
 
-    /* ── RIGHT PANEL ── */
     .right {
       flex: 1;
       padding: 88px 0 96px 60px;
@@ -501,7 +491,6 @@
       background: var(--bg);
     }
 
-    /* ── ABOUT ── */
     .about p {
       font-size: 0.92rem;
       line-height: 1.85;
@@ -552,7 +541,6 @@
       margin-bottom: 0;
     }
 
-    /* ── EXPERIENCE CARDS ── */
     .exp-card {
       display: flex;
       gap: 24px;
@@ -627,7 +615,6 @@
 
     .exp-body ul li { margin-bottom: 4px; }
 
-    /* ── TAGS ── */
     .tags { display: flex; flex-wrap: wrap; gap: 7px; }
 
     .tag {
@@ -648,7 +635,6 @@
       box-shadow: 0 0 10px rgba(100,255,218,0.15);
     }
 
-    /* ── RESUME LINK ── */
     .resume-link {
       display: inline-flex;
       align-items: center;
@@ -672,7 +658,6 @@
       gap: 13px;
     }
 
-    /* ── PROJECT CARDS ── */
     .proj-card {
       display: flex;
       gap: 24px;
@@ -724,7 +709,6 @@
       margin-bottom: 12px;
     }
 
-    /* ── CERTIFICATIONS ── */
     .cert-list { list-style: none; }
 
     .cert-list li {
@@ -763,7 +747,6 @@
       color: var(--text);
     }
 
-    /* ── EDUCATION ── */
     .edu-card {
       padding: 20px;
       border-radius: 10px;
@@ -801,7 +784,6 @@
 
     .edu-card .meta .gpa { color: var(--accent); font-weight: 600; }
 
-    /* ── FOOTER ── */
     footer {
       padding: 0 20px;
       font-size: 0.76rem;
@@ -812,7 +794,6 @@
     footer a { color: var(--heading); }
     footer a:hover { color: var(--accent); }
 
-    /* ── ORBS ── */
     .orb {
       position: absolute;
       border-radius: 50%;
@@ -827,7 +808,6 @@
       66%       { transform: translate(-30px, 30px) scale(0.9); }
     }
 
-    /* ── PAGE ENTRANCE ── */
     .left  { animation: enterLeft  0.8s cubic-bezier(.22,.68,0,1.2) both; }
     .right { animation: enterRight 0.7s ease 0.22s both; }
 
@@ -840,7 +820,6 @@
       to   { opacity: 1; transform: none; }
     }
 
-    /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0;
       transform: translateY(22px);
@@ -848,13 +827,11 @@
     }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(100,255,218,0.16); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(100,255,218,0.35); }
 
-    /* ── COMMAND PALETTE ── */
     #cmd-backdrop {
       position: fixed;
       inset: 0;
@@ -945,7 +922,6 @@
       background: rgba(100,255,218,0.04);
     }
 
-    /* ── KEYBOARD HINT ── */
     #kbd-hint {
       position: fixed;
       bottom: 24px;
@@ -974,7 +950,6 @@
       background: rgba(255,255,255,0.04);
     }
 
-    /* ── SECTION LABEL (mobile) ── */
     @media (max-width: 768px) {
       .container { flex-direction: column; padding: 0 20px; }
       .left { position: relative; height: auto; width: 100%; min-width: unset; padding: 48px 0 24px; }
@@ -1018,26 +993,21 @@
 </head>
 <body>
 
-<!-- ── LOADER ── -->
 <div id="loader">
   <div class="loader-name">VRK</div>
   <div class="loader-track"><div class="loader-bar"></div></div>
 </div>
 
-<!-- ── CURSOR ── -->
 <div id="cursor-ring"></div>
 <div id="cursor-dot"></div>
 
-<!-- ── SCROLL PROGRESS ── -->
 <div id="scroll-progress"></div>
 
-<!-- ── BACKGROUNDS ── -->
 <div class="bg-grid"></div>
 <div class="noise"></div>
 <div class="particles" id="particles"></div>
 <div class="spotlight" id="spotlight"></div>
 
-<!-- ── COMMAND PALETTE ── -->
 <div id="cmd-backdrop"></div>
 <div id="cmd-palette">
   <div class="cmd-header"><span>Quick Contact</span><kbd>ESC to close</kbd></div>
@@ -1057,7 +1027,6 @@
 
 <div class="container">
 
-  <!-- ════ LEFT PANEL ════ -->
   <aside class="left">
     <div class="left-top">
       <div class="left-top-header">
@@ -1124,10 +1093,8 @@
     </div>
   </aside>
 
-  <!-- ════ RIGHT PANEL ════ -->
   <main class="right">
 
-    <!-- ABOUT -->
     <section id="about" class="about">
       <div class="sticky-header section-label"><span>About</span></div>
 
@@ -1177,11 +1144,9 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="sticky-header section-label"><span>Experience</span></div>
 
-      <!-- Ford / Codelark -->
       <div class="exp-card">
         <div class="exp-date">Aug 2024 — Present</div>
         <div class="exp-body">
@@ -1214,7 +1179,6 @@
         </div>
       </div>
 
-      <!-- Add On Systems -->
       <div class="exp-card">
         <div class="exp-date">Sep 2021 — Jul 2022</div>
         <div class="exp-body">
@@ -1247,7 +1211,6 @@
       </a>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects">
       <div class="sticky-header section-label"><span>Projects</span></div>
 
@@ -1315,7 +1278,6 @@
 
     </section>
 
-    <!-- CERTIFICATIONS -->
     <section id="certifications">
       <div class="sticky-header section-label"><span>Certifications</span></div>
 
@@ -1351,7 +1313,6 @@
       </ul>
     </section>
 
-    <!-- EDUCATION -->
     <section id="education">
       <div class="sticky-header section-label"><span>Education</span></div>
 
@@ -1376,7 +1337,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
       <p>
         &copy; <span id="footer-year"></span> Vinesh Reddy Kankanalapally. Designed &amp; built from scratch.
@@ -1389,28 +1349,25 @@
   </main>
 </div>
 
-<!-- ── KEYBOARD HINT ── -->
 <div id="kbd-hint"><kbd>⌘</kbd><kbd>K</kbd> Quick Contact</div>
 
 <script>
-  /* ═══ FOOTER YEAR ═══ */
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-  /* ═══ LOADER ═══ */
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('loader').classList.add('hidden'), 950);
   });
 
-  /* ═══ SCROLL PROGRESS ═══ */
+  // scroll progress bar
   const progressBar = document.getElementById('scroll-progress');
   document.addEventListener('scroll', () => {
     const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
     progressBar.style.width = pct + '%';
   }, { passive: true });
 
-  /* ═══ CUSTOM CURSOR ═══ */
+  // custom cursor with lag effect
   const ring = document.getElementById('cursor-ring');
-  const dot  = document.getElementById('cursor-dot');
+  const dot = document.getElementById('cursor-dot');
   let mx = 0, my = 0, rx = 0, ry = 0;
 
   document.addEventListener('mousemove', e => {
@@ -1418,12 +1375,13 @@
     dot.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
   }, { passive: true });
 
-  (function animateRing() {
+  function animateRing() {
     rx += (mx - rx) * 0.11;
     ry += (my - ry) * 0.11;
     ring.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`;
     requestAnimationFrame(animateRing);
-  })();
+  }
+  animateRing();
 
   document.querySelectorAll('.exp-card, .proj-card, .cert-list li, .edu-card, .skill-group').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-card'));
@@ -1434,9 +1392,8 @@
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-link'));
   });
 
-  /* ═══ PARTICLES ═══ */
   const container = document.getElementById('particles');
-  const count = window.innerWidth < 768 ? 16 : 30;
+  let count = window.innerWidth < 768 ? 16 : 30;
   const colors = ['rgba(100,255,218,0.55)', 'rgba(167,139,250,0.45)', 'rgba(100,255,218,0.35)'];
 
   for (let i = 0; i < count; i++) {
@@ -1448,7 +1405,6 @@
     container.appendChild(p);
   }
 
-  /* ═══ ORBS ═══ */
   const orbDefs = [
     { color: 'rgba(100,255,218,0.09)', size: [200, 350] },
     { color: 'rgba(167,139,250,0.07)', size: [180, 280] },
@@ -1465,7 +1421,6 @@
     container.appendChild(orb);
   }
 
-  /* ═══ SCROLL REVEAL ═══ */
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
@@ -1478,7 +1433,6 @@
     revealObs.observe(el);
   });
 
-  /* ═══ ANIMATED STAT COUNTERS ═══ */
   const statObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting || e.target.dataset.counted) return;
@@ -1499,14 +1453,13 @@
     if (m) { el.dataset.count = m[1]; el.dataset.suffix = '%'; statObs.observe(el); }
   });
 
-  /* ═══ CURSOR SPOTLIGHT ═══ */
   const spotlight = document.getElementById('spotlight');
   document.addEventListener('mousemove', e => {
     spotlight.style.background =
       `radial-gradient(650px at ${e.clientX}px ${e.clientY}px, rgba(29,78,216,0.12), transparent 80%)`;
   }, { passive: true });
 
-  /* ═══ ACTIVE NAV ═══ */
+  // highlight active nav section on scroll
   const sections = document.querySelectorAll('main section');
   const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1530,7 +1483,7 @@
     });
   });
 
-  /* ═══ TYPEWRITER ═══ */
+  // typewriter
   const roles = ['Distributed Systems', 'High-Availability Backend', 'Event-Driven Architecture', 'System Design', 'Cloud-Native Engineering', 'API Design & gRPC'];
   let rIdx = 0, cIdx = 0, deleting = false;
   const tw = document.getElementById('typewriter-text');
@@ -1551,7 +1504,7 @@
   }
   setTimeout(type, 1000);
 
-  /* ═══ 3D CARD TILT ═══ */
+  // subtle 3d tilt on hover — only for mouse devices
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.proj-card, .exp-card').forEach(card => {
       card.addEventListener('mousemove', e => {
@@ -1568,7 +1521,6 @@
     });
   }
 
-  /* ═══ MAGNETIC SOCIALS ═══ */
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.socials a').forEach(icon => {
       icon.addEventListener('mousemove', e => {
@@ -1585,7 +1537,6 @@
     });
   }
 
-  /* ═══ CLICKABLE CARDS (projects + experience + education) ═══ */
   document.querySelectorAll('.proj-card, .exp-card, .edu-card').forEach(card => {
     const link = card.querySelector('h3 a');
     if (!link) return;
@@ -1596,17 +1547,18 @@
     });
   });
 
-  /* ═══ COMMAND PALETTE ═══ */
+  // cmd+k contact popup
   const backdrop = document.getElementById('cmd-backdrop');
-  const palette  = document.getElementById('cmd-palette');
+  const palette = document.getElementById('cmd-palette');
 
-  function openPalette()  { backdrop.classList.add('open'); palette.classList.add('open'); }
+  function openPalette() { backdrop.classList.add('open'); palette.classList.add('open'); }
   function closePalette() { backdrop.classList.remove('open'); palette.classList.remove('open'); }
 
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); palette.classList.contains('open') ? closePalette() : openPalette(); }
     if (e.key === 'Escape') closePalette();
   });
+  // close when clicking outside
   backdrop.addEventListener('click', closePalette);
 </script>
 </body>
