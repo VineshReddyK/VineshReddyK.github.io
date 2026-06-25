@@ -1598,6 +1598,17 @@
     });
   }
 
+  /* ═══ CLICKABLE PROJECT CARDS ═══ */
+  document.querySelectorAll('.proj-card').forEach(card => {
+    const link = card.querySelector('h3 a');
+    if (!link) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      window.open(link.href, '_blank', 'noopener');
+    });
+  });
+
   /* ═══ COMMAND PALETTE ═══ */
   const backdrop = document.getElementById('cmd-backdrop');
   const palette  = document.getElementById('cmd-palette');
