@@ -1349,7 +1349,7 @@
       <div class="sticky-header section-label"><span>Education</span></div>
 
       <div class="edu-card">
-        <h3>University of Colorado Denver</h3>
+        <h3><a href="https://www.ucdenver.edu" target="_blank" rel="noopener">University of Colorado Denver</a></h3>
         <div class="degree">Master of Science in Computer Science</div>
         <div class="meta">
           <span>Aug 2022 – May 2024</span>
@@ -1359,7 +1359,7 @@
       </div>
 
       <div class="edu-card">
-        <h3>Vasavi College of Engineering</h3>
+        <h3><a href="https://www.vasaviengg.ac.in" target="_blank" rel="noopener">Vasavi College of Engineering</a></h3>
         <div class="degree">Bachelor of Engineering in Electronics &amp; Communication Engineering</div>
         <div class="meta">
           <span>Jul 2017 – Aug 2021</span>
@@ -1578,8 +1578,8 @@
     });
   }
 
-  /* ═══ CLICKABLE CARDS (projects + experience) ═══ */
-  document.querySelectorAll('.proj-card, .exp-card').forEach(card => {
+  /* ═══ CLICKABLE CARDS (projects + experience + education) ═══ */
+  document.querySelectorAll('.proj-card, .exp-card, .edu-card').forEach(card => {
     const link = card.querySelector('h3 a');
     if (!link) return;
     card.style.cursor = 'pointer';
