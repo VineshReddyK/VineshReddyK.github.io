@@ -1598,8 +1598,8 @@
     });
   }
 
-  /* ═══ CLICKABLE PROJECT CARDS ═══ */
-  document.querySelectorAll('.proj-card').forEach(card => {
+  /* ═══ CLICKABLE CARDS (projects + experience) ═══ */
+  document.querySelectorAll('.proj-card, .exp-card').forEach(card => {
     const link = card.querySelector('h3 a');
     if (!link) return;
     card.style.cursor = 'pointer';
