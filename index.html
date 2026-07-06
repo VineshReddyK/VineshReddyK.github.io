@@ -1378,6 +1378,14 @@
 <div id="kbd-hint"><kbd>⌘</kbd><kbd>K</kbd> Quick Contact</div>
 
 <script>
+  // redirect stale anchors from the retired "production console" design
+  const legacyHashes = { '#oncall': '', '#trace': '#experience', '#services': '#projects', '#metrics': '#about', '#audit': '#certifications' };
+  if (location.hash in legacyHashes) {
+    const target = legacyHashes[location.hash];
+    history.replaceState(null, '', location.pathname + target);
+    if (target) document.querySelector(target)?.scrollIntoView();
+  }
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.getElementById('footer-year').textContent = new Date().getFullYear();
